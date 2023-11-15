@@ -30,7 +30,7 @@ const add = (product, price, quantity) => products.push([product, price, quantit
 const remove = (productName) => {
     for (let i = 0; i < products.length; i++){
         if (products[i].includes(productName)) {
-            delete products[i];
+            products[i].length = 0;
         }
     }
 }
@@ -54,9 +54,11 @@ const decreaseQuantity = (productName) => {
 const getItems = () => {
     let logArr = '';
     products.forEach(product => {
-        logArr += `Продукт: ${product[0]}, \n`;
-        logArr += `Ціна: ${product[1]} кредитів, \n`;
-        logArr += `Кількість: ${product[2]} штук; \n\n`;
+        if (product != '') {
+            logArr += `Продукт: ${product[0]}, \n`;
+            logArr += `Ціна: ${product[1]} кредитів, \n`;
+            logArr += `Кількість: ${product[2]} штук; \n\n`;
+        }
     });
     console.log(`Ви маєте у своїй корзині такі товари: \n\n${logArr}Сумарна ціна всіх товарів: ${countTotalPrice()} кредитів, кількість ${countTotalQuantity()} штук.`);
 }
