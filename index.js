@@ -8,7 +8,7 @@ const products = [
 const countTotalPrice = () => {
     let totalPrice = 0;
     products.forEach(product => {
-        totalPrice += Number(product[1]) * Number(product[2]);
+        totalPrice += product.length != 0 ? Number(product[1]) * Number(product[2]) : 0;
     });
     return totalPrice;
 }
@@ -16,7 +16,7 @@ const countTotalPrice = () => {
 const countTotalQuantity = () => {
     let totalProducts = 0;
     products.forEach(product => {
-        totalProducts += Number(product[2]);
+        totalProducts += product.length != 0 ? Number(product[2]) : 0;
     });
     return totalProducts;
 }
